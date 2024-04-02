@@ -4,6 +4,7 @@ const bcrypt=require("bcryptjs");
 const home =async (req,res)=>{
     try {
         res.status(200).send("Hello mein project bana raha hoon");
+        // console.log("WHy?");
     } catch (error) {
         console.log(error);
     }

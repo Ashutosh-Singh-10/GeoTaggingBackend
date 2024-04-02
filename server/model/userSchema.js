@@ -35,15 +35,18 @@ userSchema.pre("save",async function(next){
     const user = this;
  
     if(!user.isModified("password")){
+        console.log("check");
      next();
     }
     
     try {
+        console.log("check");
       const saltRound = await bcrypt.genSalt(10);
       const hash_password = await bcrypt.hash(user.password,saltRound);
       user.password=hash_password;
  
     } catch (error) {
+        console.log("check");
      next(error);
     }
  
@@ -65,6 +68,10 @@ userSchema.pre("save",async function(next){
             );
         
      } catch (error) {
+        console.log("check");
        console.error(error);
      }
  };
+
+ const User = new mongoose.model("User",userSchema);
+module.exports=User;
